@@ -10,6 +10,7 @@
     <title>ChatStats</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/chartjs-chart-wordcloud@4"></script>
     <script>
       const timeOfDayData = [614,  486,  628,  808, 397, 278,  241,  280,  362, 439, 487,  804,  685,  576, 956, 953, 1007,  942, 1019, 822, 651,  748, 1053,  774 ];
       const mostUsedWords = [
@@ -48,8 +49,19 @@
   <body>
     <h1>ChatStats ~ January, 2024</h1>
     <p>Over the course of the month of January, 2024 there were a total of <b>16,010</b> messages sent.</p>
+    
     <h2>By time of day (UTC)</h2>
     <div style="width: 800px;"><canvas id="byTimeOfDay"></canvas></div>
+    
+    <h2>Most used words (Top 50)</h2>
+    <div style="width: 800px;"><canvas id="wordCloud"></canvas></div>
+
+    <h2>Messages with the most replies (Top 10)</h2>
+    <p><i>For the purpose of readability, messages without text (ie image, video and file embeds) do not appear on this list.</i></p>
+    <ol id="mostRepliedList">
+      
+    </ol>
+    
     <script>
       new Chart(document.getElementById('byTimeOfDay'),
         {
@@ -59,12 +71,45 @@
             datasets: [
               {
                 label: 'Messages by hour',
-                data: data
+                data: timeOfDayData
               }
             ]
           }
         }
       );
+
+      new Chart(document.getElementById("wordCloud").getContext("2d"), {
+        type: "wordCloud",
+        data: {
+          labels: mostUsedWords.map((w) => w[0]),
+          datasets: [
+            {
+              label: "",
+              data: mostUsedWords.map((w) => 10 + w * 10)
+            }
+          ]
+        },
+        options: {
+          title: {
+            display: false,
+            text: "Chart.js Word Cloud"
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+
+      const mostRepliedContainer = document.getElementById("mostRepliedList");
+      mostRepliedLines.forEach(line => {
+        const listItem = document.createElement("li");
+        const listItemText = document.createTextNode(`${line[0]} (${line[1])`);
+        listItem.appendChild(listItemText);
+    
+        mostRepliedContainer.appendChild(toDoItem);
+      });
     </script>
   </body>
 </html>
