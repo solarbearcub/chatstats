@@ -1,0 +1,74 @@
+
+
+## By time of day (UTC)
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ChatStats</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      const timeOfDayData = [614,  486,  628,  808, 397, 278,  241,  280,  362, 439, 487,  804,  685,  576, 956, 953, 1007,  942, 1019, 822, 651,  748, 1053,  774 ];
+      const mostUsedWords = [
+        [ 'like', 609 ],    [ 'no', 400 ],     [ 'from', 375 ],
+        [ 'more', 294 ],    [ 'fuck', 267 ],   [ 'want', 252 ],
+        [ 'all', 250 ],     [ 'people', 235 ], [ 'some', 224 ],
+        [ 'fucking', 207 ], [ 'send', 206 ],   [ 'need', 197 ],
+        [ 'sex', 194 ],     [ 'know', 193 ],   [ 'one', 186 ],
+        [ 'her', 181 ],     [ 'good', 175 ],   [ 'gay', 174 ],
+        [ 'see', 172 ],     [ 'shit', 164 ],   [ 'hot', 162 ],
+        [ 'only', 154 ],    [ 'anon', 154 ],   [ 'lol', 152 ],
+        [ 'love', 151 ],    [ 'being', 146 ],  [ 'his', 141 ],
+        [ 'ass', 139 ],     [ 'dick', 139 ],   [ 'here', 137 ],
+        [ 'she', 137 ],     [ 'now', 136 ],    [ 'yeah', 135 ],
+        [ 'still', 134 ],   [ 'got', 134 ],    [ 'same', 133 ],
+        [ 'post', 132 ],    [ 'yes', 132 ],    [ 'should', 130 ],
+        [ 'also', 128 ],    [ 'black', 127 ],  [ 'porn', 125 ],
+        [ "can't", 123 ],   [ 'lmao', 122 ],   [ 'been', 115 ],
+        [ 'did', 114 ],     [ 'man', 114 ],    [ 'other', 113 ],
+        [ 'fat', 110 ],     [ 'women', 110 ]
+      ];
+      const mostRepliedLines = [
+        [ 'Am I ugly?', 15 ],
+        [ 'Retarded kid asks his step dad to shoot him (and he does)', 11 ],
+        [ 'T O T A L  O B E S E  D E S T R U C T I O N', 10 ],
+        [ 'Anons if you were in this scenario and were guaranteed full anonymity, it would never be traced back to you, would you play with this cock?', 9 ],
+        [ 'Alex Jones fucks trannies', 9 ],
+        [ 'Good morning. I hate fat people. They should all die.', 8 ],
+        [ 'Fatties should die.', 8 ],
+        [ 'would you date a 17 years old', 8 ],
+        [ 'im a skeleton', 8 ],
+        [ 'true', 7 ]
+      ];
+    </script>
+  </head>
+  <body>
+    <h1>ChatStats ~ January, 2024</h1>
+    <p>Over the course of the month of January, 2024 there were a total of <b>16,010</b> messages sent.</p>
+    <h2>By time of day (UTC)</h2>
+    <div style="width: 800px;"><canvas id="byTimeOfDay"></canvas></div>
+    <script>
+      new Chart(
+      document.getElementById('byTimeOfDay'),
+        {
+          type: 'bar',
+          data: {
+            labels: Array.from(Array(24).keys()),
+            datasets: [
+              {
+                label: 'Messages by hour',
+                data: data
+              }
+            ]
+          }
+        }
+      );
+    </script>
+  </body>
+</html>
