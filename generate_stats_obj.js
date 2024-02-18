@@ -1,4 +1,4 @@
-import result from './ChatExport_2024-02-17 (3)/result.json' assert { type: 'json' };
+import result from './result.json' assert { type: 'json' };
 
 const getMonth = (month) => result.messages.filter(message => new Date(message.date).getUTCMonth() === month);
 
@@ -214,4 +214,5 @@ const getStats = (month = 0) => {
   };
 }
 
+process.stdout.write("const data = ");
 console.dir(getStats(0), {depth: null});
