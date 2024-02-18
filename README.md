@@ -1,6 +1,6 @@
 # ChatStats
 
-Based loosely on ChanStats used to find "insights" on IRC channels, ChatStats uses Telegram's JSON chat export to generate similar insights.
+Based loosely on [ChanStat](https://chanstat.net/) which is used to find "insights" on IRC channels, ChatStats uses Telegram's JSON chat export to generate similar insights.
 
 ## How to use
 
