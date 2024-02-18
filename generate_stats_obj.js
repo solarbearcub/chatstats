@@ -1,6 +1,6 @@
-import results from './result.json' assert { type: 'json' };
+import result from './ChatExport_2024-02-17 (3)/result.json' assert { type: 'json' };
 
-const getMonth = (month) => results.messages.filter(message => new Date(message.date).getUTCMonth() === month);
+const getMonth = (month) => result.messages.filter(message => new Date(message.date).getUTCMonth() === month);
 
 const getAverageByHour = (messages) => {
   const hours = Array(24).fill(0);
@@ -191,6 +191,7 @@ const getStats = (month = 0) => {
   const numberContainingVoice = monthly.filter(message => "media_type" in message && message.media_type === "voice_message").length;
 
   return {
+    name: result.name,
     messageVolume: monthly.length,
     hourlyAverage,
     top50words,
